@@ -1,15 +1,13 @@
-CC         = clang-3.8
-CFLAGS     = -c -Wall --std=c99
-LDFLAGS    =
-EXECUTABLE = evrelay
-
+CC      = clang-3.8
+CFLAGS  = -c -Wall --std=c99
+LDFLAGS =
 INC_DIR = ./include
 SRC_DIR = ./src
 OBJ_DIR = ./obj
 LIB_DIR = ./lib
 BIN_DIR = ./bin
 
-SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
+SOURCES := $(shell find $(SRC_DIR) -name '*.c')
 OBJECTS := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SOURCES))
 
 # Rule to build object files for corresponding C files
