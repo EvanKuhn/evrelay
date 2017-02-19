@@ -1,0 +1,17 @@
+This is my own re-implementation of carbon-relay, in C.
+
+My goal is to make this as fast as possible, especially for aggregaations,
+via a proper threading model that can scale to any reasonable number of
+cores on a machine (eg: 32 cores). Poor threading models will lead to
+contention during aggregation, thus limiting the amount of parallelism
+attained by the service (i.e. it won't scale beyond 2 or 3 cores).
+
+This is also a bit of a hacking project as I haven't coded in C for a
+while!
+
+Things to think about:
+- threading model
+- make vs cmake
+- event-driven programming: how? library?
+- lockless queues
+- C hash tables (libcfu, uthash, etc)
