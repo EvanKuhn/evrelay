@@ -9,7 +9,7 @@
 CC        = clang-3.8
 CFLAGS    = -Wall --std=c99
 LDFLAGS   =
-INC_FLAGS = -I$(INC_DIR) -I$(LIBUV_INC_DIR)
+INC_FLAGS = -I$(INC_DIR) -I$(LIBUV_INC_DIR) -I$(LIBYAML_INC_DIR)
 
 # Directories
 INC_DIR = $(PROJ_ROOT)/include
@@ -30,3 +30,10 @@ LIBUV_LIB_FILE = $(EXT_DIR)/libuv-$(LIBUV_VERSION)/.libs/libuv.a
 LIBUV_TAR_FILE = $(EXT_DIR)/tarballs/libuv-$(LIBUV_VERSION).tar.gz
 LIBUV_INC_DIR  = $(LIBUV_PROJ_DIR)/include
 LIBUV_LIB_DIR  = $(LIBUV_PROJ_DIR)/.libs
+
+LIBYAML_VERSION  = 0.1.7
+LIBYAML_PROJ_DIR = $(EXT_DIR)/libyaml-$(LIBYAML_VERSION)
+LIBYAML_LIB_FILE = $(EXT_DIR)/libyaml-$(LIBYAML_VERSION)/src/.libs/libyaml.a
+LIBYAML_TAR_FILE = $(EXT_DIR)/tarballs/libyaml-$(LIBYAML_VERSION).tar.gz
+LIBYAML_INC_DIR  = $(LIBYAML_PROJ_DIR)/include
+LIBYAML_LIB_DIR  = $(LIBYAML_PROJ_DIR)/.libs

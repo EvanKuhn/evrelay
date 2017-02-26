@@ -13,7 +13,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libuv
 evrelay: $(OBJECTS) libuv
 	$(CC) $(LDFLAGS) -o $(BIN_DIR)/$@ $(INC_FLAGS) $(OBJECTS) $(LIBUV_LIB_FILE)
 
-scratch: $(OBJECTS)
+scratch: $(OBJECTS) libyaml
 	$(MAKE) -C test/scratch
 
 #-------------------------------------------------------------------------------
@@ -30,6 +30,19 @@ $(LIBUV_PROJ_DIR):
 	tar -xzf $(LIBUV_TAR_FILE) -C $(EXT_DIR)
 
 #-------------------------------------------------------------------------------
+# Build libyaml
+#-------------------------------------------------------------------------------
+
+.PHONY: libyaml
+libyaml: $(LIBYAML_LIB_FILE)
+
+$(LIBYAML_LIB_FILE): $(LIBYAML_PROJ_DIR)
+	cd $(LIBYAML_PROJ_DIR) && ./bootstrap && ./configure && make
+
+$(LIBYAML_PROJ_DIR):
+	tar -xzf $(LIBYAML_TAR_FILE) -C $(EXT_DIR)
+
+#-------------------------------------------------------------------------------
 # Clean
 #-------------------------------------------------------------------------------
 
@@ -40,3 +53,4 @@ clean:
 .PHONY: libclean
 libclean:
 	rm -rf $(EXT_DIR)/libuv*
+	rm -rf $(EXT_DIR)/libyaml*
