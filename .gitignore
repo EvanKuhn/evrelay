@@ -1,2 +1,9 @@
 /bin
 /obj
+
+# Only save ext/tarballs/; other subdirs will be created by Make commands
+/ext/*
+!/ext/tarballs
+
+# Lib will be created by Make commands
+/lib
