@@ -1,0 +1,32 @@
+# IMPORTANT: define the PROJ_ROOT variable before including this file. Eg:
+#
+#     PROJ_ROOT = ../..PROJ_ROOT = ../..
+#     include $(PROJ_ROOT)/Makefile.common
+#
+# This way all paths will be correct relative to the project root dir.
+
+# Compilation
+CC        = clang-3.8
+CFLAGS    = -Wall --std=c99
+LDFLAGS   =
+INC_FLAGS = -I$(INC_DIR) -I$(LIBUV_INC_DIR)
+
+# Directories
+INC_DIR = $(PROJ_ROOT)/include
+SRC_DIR = $(PROJ_ROOT)/src
+OBJ_DIR = $(PROJ_ROOT)/obj
+LIB_DIR = $(PROJ_ROOT)/lib
+EXT_DIR = $(PROJ_ROOT)/ext
+BIN_DIR = $(PROJ_ROOT)/bin
+
+# Source and object files
+SOURCES = $(shell find $(SRC_DIR) -name '*.c')
+OBJECTS = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SOURCES))
+
+# External libraries
+LIBUV_VERSION  = 1.11.0
+LIBUV_PROJ_DIR = $(EXT_DIR)/libuv-$(LIBUV_VERSION)
+LIBUV_LIB_FILE = $(EXT_DIR)/libuv-$(LIBUV_VERSION)/.libs/libuv.a
+LIBUV_TAR_FILE = $(EXT_DIR)/tarballs/libuv-$(LIBUV_VERSION).tar.gz
+LIBUV_INC_DIR  = $(LIBUV_PROJ_DIR)/include
+LIBUV_LIB_DIR  = $(LIBUV_PROJ_DIR)/.libs

@@ -15,3 +15,19 @@ Things to think about:
 - event-driven programming: how? library?
 - lockless queues
 - C hash tables (libcfu, uthash, etc)
+
+Resources
+- libuv downloads: http://dist.libuv.org/dist/
+- libuv book: https://nikhilm.github.io/uvbook/index.html
+
+
+TODO:
+[X] need hash table impl
+[ ] write testing framework with nu_unit
+[ ] write yaml-parsing code
+[ ] C style guide
+[X] investigate libcfu (git@github.com:codebrainz/libcfu.git)
+
+CLEANUP:
+[ ] remove libcfu tarfile and related code
+[ ] build tests in the main makefile; don't need multiple makefiles
