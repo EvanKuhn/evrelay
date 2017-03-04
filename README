@@ -31,3 +31,13 @@ TODO:
 CLEANUP:
 [ ] remove libcfu tarfile and related code
 [ ] build tests in the main makefile; don't need multiple makefiles
+
+
+Parsing YAML is confusing.
+
+- If its the start of a doc, read the next token to get the root node type:
+  - seq, map, or scalar
+- If the current node is a map, read the next two tokens (key/value pair) and add them to the map
+  - If the value is a map or seq, set it to the curr node
+- If the current node is a sequence, read the next node and add it
+  - If map or seq, set it to curr

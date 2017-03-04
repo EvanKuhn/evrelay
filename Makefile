@@ -48,6 +48,7 @@ $(LIBYAML_PROJ_DIR):
 
 .PHONY: clean
 clean:
+	find . -type f | xargs -n 5 touch # To fix 'clock skew' warning on vagrant
 	rm -f $(OBJ_DIR)/*.o $(BIN_DIR)/*
 
 .PHONY: libclean
