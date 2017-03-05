@@ -1,6 +1,8 @@
 PROJ_ROOT = .
 include $(PROJ_ROOT)/Makefile.common
 
+LIBS = $(LIBUV_LIB_FILE) $(LIBYAML_LIB_FILE)
+
 #-------------------------------------------------------------------------------
 # Build evrelay
 #-------------------------------------------------------------------------------
@@ -11,7 +13,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c libuv
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC_FLAGS)
 
 evrelay: $(OBJECTS) libuv
-	$(CC) $(LDFLAGS) -o $(BIN_DIR)/$@ $(INC_FLAGS) $(OBJECTS) $(LIBUV_LIB_FILE)
+	$(CC) $(LDFLAGS) -o $(BIN_DIR)/$@ $(INC_FLAGS) $(OBJECTS) $(LIBS)
 
 scratch: $(OBJECTS) libyaml
 	$(MAKE) -C test/scratch

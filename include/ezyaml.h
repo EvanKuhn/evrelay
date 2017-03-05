@@ -6,11 +6,11 @@
 // Node data types
 typedef enum ezyaml_node_type {
   NODE_TYPE_UNDEF = 0,  // No type yet specified
-  NODE_TYPE_STR,        // String
   NODE_TYPE_INT,        // Integer
   NODE_TYPE_FLT,        // Floating point
-  NODE_TYPE_MAP,        // Map (string to node)
-  NODE_TYPE_SEQ         // Sequence
+  NODE_TYPE_STR,        // String
+  NODE_TYPE_SEQ,        // Sequence
+  NODE_TYPE_MAP         // Map (string to node)
 } ezyaml_node_type_t;
 
 // Forward declare the node struct so it can refer to itself internallys
@@ -24,16 +24,16 @@ struct ezyaml_node_s {
 
   union {
     // Scalar value types
-    char*   strval;
     int     intval;
     double  fltval;
+    char*   strval;
 
     // Map of (string,ezyaml_node_t) pairs
     hash_t* map;
 
     // Sequence of nodes
     struct {
-      ezyaml_node_t* items;
+      ezyaml_node_t** items;
       size_t length;
     } seq;
 
@@ -48,9 +48,9 @@ void ezyaml_node_delete(ezyaml_node_t* node);
 
 // Check node types
 bool ezyaml_node_is_undef(ezyaml_node_t* node);
-bool ezyaml_node_is_str  (ezyaml_node_t* node);
 bool ezyaml_node_is_int  (ezyaml_node_t* node);
 bool ezyaml_node_is_flt  (ezyaml_node_t* node);
+bool ezyaml_node_is_str  (ezyaml_node_t* node);
 bool ezyaml_node_is_seq  (ezyaml_node_t* node);
 bool ezyaml_node_is_map  (ezyaml_node_t* node);
 
@@ -59,9 +59,9 @@ ezyaml_node_t* ezyaml_seq_at(ezyaml_node_t* node, int index);
 ezyaml_node_t* ezyaml_map_find(ezyaml_node_t* node, char* key);
 
 // Get node values
-char*   ezyaml_str(ezyaml_node_t* node);
-int     ezyaml_int(ezyaml_node_t* node);
-double  ezyaml_flt(ezyaml_node_t* node);
+char*  ezyaml_str(ezyaml_node_t* node);
+int    ezyaml_int(ezyaml_node_t* node);
+double ezyaml_flt(ezyaml_node_t* node);
 
 // Utilities
 char* ezyaml_type_to_string(ezyaml_node_type_t type);

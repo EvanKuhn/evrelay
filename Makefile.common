@@ -7,7 +7,7 @@
 
 # Compilation
 CC        = clang-3.8
-CFLAGS    = -Wall --std=c99
+CFLAGS    = -Wall --std=gnu99
 LDFLAGS   =
 INC_FLAGS = -I$(INC_DIR) -I$(LIBUV_INC_DIR) -I$(LIBYAML_INC_DIR)
 

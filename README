@@ -21,6 +21,11 @@ Resources
 - libuv book: https://nikhilm.github.io/uvbook/index.html
 
 
+Style
+- Functions to init / de-init a structure are to be named: `_init()`, `_clear()`
+- Functions to allocate / free a structure are to be named: `_new()`, `_free()`
+
+
 TODO:
 [X] need hash table impl
 [ ] write testing framework with nu_unit
